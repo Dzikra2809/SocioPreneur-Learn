@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../IMG/SocioPreneur Learn Logo.png">
+    <title>Daftar - Sociopreneur Learn</title>
+    <meta name="description" content="Bergabung dengan Sociopreneur Learn dan mulai perjalanan social entrepreneurship Anda">
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo">
+                <!-- <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                </svg> -->
+                <a href="index.html">SocioPreneur Learn</a>
+            </div>
+            
+            <nav class="header__nav">
+                <a href="index.html">Beranda</a>
+                <a href="courses.html">Kursus</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="community.html">Komunitas</a>
+            </nav>
+            
+            <div class="header__auth">
+                <a href="index.html" class="btn btn--small btn--outline">Masuk</a>
+            </div>
+            
+            <button class="header__mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h1>Bergabung dengan Sociopreneur Learn</h1>
+                    <p>Mulai perjalanan Anda dalam menciptakan dampak sosial positif melalui bisnis.</p>
+                </div>
+
+                <div class="form fade-in">
+                    <form id="signupForm">
+                        <div class="form__group">
+                            <label for="name" class="form__label">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" class="form__input" required 
+                                   placeholder="Masukkan nama lengkap Anda">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email</label>
+                            <input type="email" id="email" name="email" class="form__input" required 
+                                   placeholder="Masukkan email Anda">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="password" class="form__label">Password</label>
+                            <input type="password" id="password" name="password" class="form__input" required 
+                                   placeholder="Minimal 6 karakter">
+                            <div class="form__help">Password minimal 6 karakter</div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="confirmPassword" class="form__label">Konfirmasi Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form__input" required 
+                                   placeholder="Ulangi password Anda">
+                        </div>
+
+                        <div class="form__group">
+                            <label class="form__label">
+                                <input type="checkbox" required style="margin-right: 0.5rem;">
+                                Saya setuju dengan <a href="#" target="_blank">Syarat & Ketentuan</a> dan <a href="#" target="_blank">Kebijakan Privasi</a>
+                            </label>
+                        </div>
+
+                        <div class="form__group">
+                            <button type="submit" class="btn btn--primary" style="width: 100%;"> Daftar Sekarang</button>
+                        </div>
+
+                        <div class="text-center">
+                            <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 SocioPreneur Learn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+</body>
+
+</html>

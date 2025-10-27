@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Business</title>
+  <style>
+
+    :root {
+  --color-primary: #819A91;       /* Primary */
+  --color-secondary: #A7C1A8;    /* Secondary */
+  --color-bg: #EEEFE0;           /* Background */
+  --color-muted: #666666;
+  --color-dark: #2C3E50;
+  --color-light: #FFFFFF;
+  --color-border: #D1D8BE;       /* Border & soft accent */
+  --color-success: #28A745;
+  --color-warning: #FFC107;
+  --color-danger: #DC3545;
+  --color-text: #2C3E50;
+
+  --font-family: 'Poppins', sans-serif;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+    body {
+      font-family: 'Linux Libertine', 'Georgia', 'Times New Roman', serif;
+      margin: 0;
+      background: #EEEFE0;
+      color: var(--color-text);
+    }
+
+    /* overlay */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* popup */
+    .popup {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      width: 350px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup h2 { margin-bottom: 15px; }
+
+    .popup button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .popup img {
+      width: 200px;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+
+    .btn-next { background: #007bff; color: white; }
+    .btn-cancel { background: #ddd; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* konten course */
+    #courseContent {
+      display: none;
+      padding: 35px;
+      max-width: 1000px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    }
+
+    #courseContent h2 {
+      margin-bottom: 5px;
+      font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 5px;
+    }
+
+    .course-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    #courseContent p {
+      line-height: 1.8;
+      color: #202122;
+      margin: 1em 0;
+    }
+
+    .course-content-wrapper {
+      margin-top: 25px;
+    }
+
+    .numbered-section {
+      margin: 1.5em 0;
+    }
+
+    .numbered-section h3 {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      color: #819A91;
+    }
+
+    .numbered-section p {
+      margin-left: 1em;
+    }
+
+    .footer {
+  background: var(--color-primary);
+  color: white;
+  padding: 3rem 0 1rem;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer__section h4 {
+  color: var(--color-secondary);
+}
+
+.footer__section ul {
+  list-style: none;
+}
+
+.footer__section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer__section ul li a {
+  color: #ccc;
+  transition: var(--transition);
+}
+
+.footer__section ul li a:hover {
+  color: var(--color-secondary);
+}
+
+.footer__bottom {
+  border-top: 1px solid #444;
+  padding-top: 1rem;
+  text-align: center;
+  color: #ccc;
+}
+  </style>
+</head>
+<body>
+
+  <!-- overlay -->
+  <div class="overlay" id="overlay">
+    <!-- popup 1 -->
+    <div class="popup" id="popup1">
+      <h2>Langganan Dulu!</h2>
+      <p>Biar bisa lanjut belajar, pilih lanjut ke pembayaran dulu ya.</p>
+      <button class="btn-next" id="nextBtn">Next</button>
+      <button class="btn-cancel" id="cancelBtn">Cancel</button>
+    </div>
+
+    <!-- popup 2 -->
+    <div class="popup" id="popup2">
+      <h2>Scan Barcode Payment</h2>
+      <img src="../IMG/barcode.jpeg" alt="tes">
+      <button class="btn-next" id="confirmBtn">Bayar Sekarang</button>
+      <button class="btn-cancel" id="backBtn">Kembali</button>
+    </div>
+  </div>
+
+  <!-- konten course -->
+  <div id="courseContent">
+    <h2>Kerja Remote: Kerja Santai, Gaji Serius</h2>
+    <img src="../IMG/remot2.jpg" alt="Remote Work Illustration" class="course-image">
+    
+    <div class="course-content-wrapper">
+      <div class="numbered-section">
+        <p>
+          Seiring bergantinya zaman, dunia pekerjaan juga ikut berkembang. Banyak perusahaan yang menerapkan sistem kerja remote atau remote working kepada karyawannya. Jadi sebenarnya apa itu kerja remote? Dan bagaimana sistem kerjanya? 
+        </p>
+        <p>
+          Mengutip dari Business 2 Community, dalam 5 tahun terakhir, jumlah orang yang bekerja secara remote meningkat hingga 44%.
+        </p>
+        <p>Mari simak penjelasan tentang apa itu remote working!</p>
+      </div>
+
+      <div class="numbered-section">
+        <h3>Apa Itu Remote Working?</h3>
+        <p>
+          Kerja remote atau remote working berarti kita bekerja tapi tidak ke kantor, bisa diselesaikan di rumah ataupun dimana saja.
+        </p>
+        <p>
+          Metode kerja seperti in dapat memberikan kenyamanan bagi karyawan, sehingga bisa meningkatkan kinerja perusahaan.
+        </p>
+        <p>
+          Menurut Flex Jobs, sebuah survei yang dilakukan dengan Mental Health America menemukan bahwa orang dengan pilihan kerja secara remote atau remote working, melaporkan kondisi kesehatan mental yang lebih baik dibanding dengan orang yang bekerja di kantor.
+        </p>
+        <p>
+          Nah bagi kalian yang pengen punya kesehatan mental yang lebih baik dengan melakukan kerja remote atau remote working, kita akan kasih tau beberapa pekerjaan yang bisa diselesaikan dengan remote working.
+        </p>
+      </div>
+
+      <div class="numbered-section">
+        <h3>Pekerjaan yang Bisa Remot</h3>
+        <img src="../IMG/remot1.jpg" alt="" class="course-image">
+      </div>
+
+      <div class="numbered-section">
+        <h3>1. Content Writer</h3>
+        <p>
+          Kalian ahli dibidang tulis menulis? Content writer bisa menjadi profesi yang cocok buat kalian.
+        </p>
+        <p>
+          Profesi ini dinilai bisa dikerjakan secara remote. Karena biasanya seorang content writer bertugas untuk menulis, mengedit, dan mengirimkan dokumen.
+        </p>
+        <p>
+          Jadi tanpa bertatap muka pun kalian bisa menyelesaikan pekerjaan tersebut!
+        </p>
+      </div>
+
+      <div class="numbered-section">
+        <h3>1. Sales</h3>
+        <p>
+          Sekarang sales bisa dikerjakan secara remote tanpa harus pergi ke kantor ataupun toko. 
+        </p>
+        <p>
+          Pasalnya, sudah banyak toko online yang memungkinkan untuk konsumen membeli tanpa harus datang ke toko tersebut.  
+        </p>
+        <p>
+          Selain itu, juga sudah ada toko online yang menggunakan fitur live yang dapat mempertemukan sales dengan pembeli via live streaming.
+        </p>
+      </div>
+
+      <div class="numbered-section">
+        <h3>1. Graphic Designer</h3>
+        <p>
+          Kabar baik bagi orang-orang yang suka desain. Pasalnya, salah satu profesinya, yaitu graphic designer dapat bekerja tanpa perlu pergi ke kantor alias kerja remote.
+        </p>
+        <p>
+          Baik sebagai freelancer atau bekerja full time di sebuah perusahaan, seorang graphic designer dapat bekerja dari mana saja. 
+        </p>
+        <p>
+          Salah satu kunci terbaik untuk menjadi graphic designer adalah membuat portofolio yang bagus dan menyebarkannya ke berbagai platform. Dengan begitu, akan banyak perusahaan yang mengetahui hasil kerjamu.
+        </p>
+      </div>
+
+      <p>
+        Masih banyak pekerjaan remote lainnya yang bisa kamu sesuaikan dengan skill yang kamu miliki. Dengan menentukan jenis pekerjaan dan perusahaannya, kamu menjadi lebih fleksibel lagi dalam menjalani pekerjaan.
+      </p>
+      <p>
+        Dengan begitu, kamu akan mendapatkan pekerjaan yang sesuai dengan apa yang diinginkan sehingga tidak menjadi beban dalam menjalaninya.
+      </p>
+
+      <p>
+        Jangan lupa untuk membagikan pengalaman kerja remote kalian ya!
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const popup1 = document.getElementById('popup1');
+    const popup2 = document.getElementById('popup2');
+    const nextBtn = document.getElementById('nextBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const backBtn = document.getElementById('backBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const courseContent = document.getElementById('courseContent');
+
+    // auto muncul popup pas page load
+    window.onload = () => {
+      overlay.style.display = 'flex';
+      popup1.style.display = 'block';
+    };
+
+    // next ke payment method
+    nextBtn.onclick = () => {
+      popup1.style.display = 'none';
+      popup2.style.display = 'block';
+    };
+
+    // cancel balik ke course.html
+    cancelBtn.onclick = () => {
+      window.location.href = 'course.html';
+    };
+
+    // balik dari popup2 ke popup1
+    backBtn.onclick = () => {
+      popup2.style.display = 'none';
+      popup1.style.display = 'block';
+    };
+
+    // bayar → tampilkan konten course
+    confirmBtn.onclick = () => {
+      overlay.style.display = 'none';
+      courseContent.style.display = 'block';
+    };
+  </script>
+
+  <footer class="footer">
+          <div class="container">
+              <div class="footer__bottom">
+                  <p>&copy; 2025 SocioPreneur Learn. All rights reserved.</p>
+              </div>
+          </div>
+      </footer>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../IMG/SocioPreneur Learn Logo.png">
+    <title>Marketplace - Sociopreneur Learn</title>
+    <meta name="description" content="Belanja produk social impact dari social enterprise lokal">
+    
+    <link rel="stylesheet" href="style.css">
+
+    
+    <style>
+        .marketplace-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .cart-button {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--color-danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-meta__item {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .product-tags {
+            margin: 1rem 0;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .cart-item__image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .cart-item__quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cart-item__quantity button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--color-border);
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .cart-total {
+            text-align: right;
+            padding: 1rem;
+            border-top: 2px solid var(--color-primary);
+        }
+        
+        .order-summary {
+            background: var(--color-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .order-total {
+            border-top: 1px solid var(--color-border);
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo">
+                <!-- <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                </svg> -->
+                <a href="index.html">SocioPreneur Learn</a>
+            </div>
+            
+            <nav class="header__nav">
+                <a href="index.html">Beranda</a>
+                <a href="courses.html">Kursus</a>
+                <a href="marketplace.html" class="active">Marketplace</a>
+                <a href="community.html">Komunitas</a>
+            </nav>
+            
+            <div class="header__auth">
+                <!-- Auth buttons will be populated by JavaScript -->
+            </div>
+            
+            <button class="header__mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="marketplace-header">
+                    <div>
+                        <h1 class="section__title">Marketplace Social Impact</h1>
+                        <p class="section__subtitle">Belanja produk yang memberikan dampak positif</p>
+                    </div>
+                    <button id="cartButton" class="btn btn--primary cart-button">
+                        🛒 Keranjang
+                        <span class="cart-count" style="display: none;">0</span>
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="search-bar">
+                    <input type="text" id="productSearch" class="form__input search-bar__input" 
+                           placeholder="Cari produk...">
+                    <select id="categoryFilter" class="form__select search-bar__filter">
+                        <option value="all">Semua Kategori</option>
+                    </select>
+                </div>
+
+                                <!-- Products Grid -->
+                                <div id="productsContainer" class="grid grid--3">
+                                        <!-- Static dummy products (3) -->
+                                        <div class="card fade-in">
+                                                <img src="https://th.bing.com/th/id/R.6654abba78768d79f1b4934334e7933a?rik=k3OPJYx3PWzdWQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-VyEGO8XpM04%2fVir9ej5k6_I%2fAAAAAAAAFCE%2f_lzWj7snazw%2fs1600%2ftenun%252Bntt%252Bmotif%252Bbuna.jpg&ehk=FfW06gcUfnbd9Dr52Ct%2ftk6Iwr%2fCq1Z9XLzwg47lK%2fY%3d&risl=&pid=ImgRaw&r=0" alt="Produk Kain Tenun" class="card__image">
+                                                <div class="card__content">
+                                                    <h3 class="card__title">Kain Tenun Lokal</h3>
+                                                    <p class="card__text">Kain tenun buatan pengrajin lokal — bahan alami, motif tradisional, mendukung usaha lokal.</p>
+                                                    <div class="card__footer">
+                                                        <div class="card__price">Rp 150.000</div>
+                                                        <button class="btn btn--primary" onclick="app.addToCart({id:'p1', title:'Kain Tenun Lokal', price:150000})">Tambah ke Keranjang</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="card fade-in">
+                                                <img src="https://alat-test.com/wp-content/uploads/2022/06/sabun-organik.jpg" alt="Produk Sabun Organik" class="card__image">
+                                                <div class="card__content">
+                                                    <h3 class="card__title">Sabun Organik</h3>
+                                                    <p class="card__text">Sabun alami dengan minyak esensial, diproduksi oleh social enterprise yang mempekerjakan penyandang disabilitas.</p>
+                                                    <div class="card__footer">
+                                                        <div class="card__price">Rp 45.000</div>
+                                                        <button class="btn btn--primary" onclick="app.addToCart({id:'p2', title:'Sabun Organik', price:45000})">Tambah ke Keranjang</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="card fade-in">
+                                                <img src="https://tse1.mm.bing.net/th/id/OIP.WSQWoiRMiXhNGjVnbvHijAHaFj?cb=12&w=1200&h=900&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Produk Tas Ramah Lingkungan" class="card__image">
+                                                <div class="card__content">
+                                                    <h3 class="card__title">Tas Ramah Lingkungan</h3>
+                                                    <p class="card__text">Tas berbahan daur ulang yang dibuat oleh komunitas lokal, cocok untuk kebutuhan sehari-hari.</p>
+                                                    <div class="card__footer">
+                                                        <div class="card__price">Rp 120.000</div>
+                                                        <button class="btn btn--primary" onclick="app.addToCart({id:'p3', title:'Tas Ramah Lingkungan', price:120000})">Tambah ke Keranjang</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 SocioPreneur Learn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/marketplace.js"></script>
+</body>
+
+</html>

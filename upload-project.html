@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../IMG/SocioPreneur Learn Logo.png">
+    <title>Upload Project - Sociopreneur Learn</title>
+    <meta name="description" content="Upload project sosial Anda dan dapatkan dukungan dari komunitas">
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo">
+                <!-- <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                </svg> -->
+                <a href="index.html">SocioPreneur Learn</a>
+            </div>
+            
+            <nav class="header__nav">
+                <a href="index.html">Beranda</a>
+                <a href="courses.html">Kursus</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="community.html">Komunitas</a>
+            </nav>
+            
+            <div class="header__auth">
+                <!-- Auth buttons will be populated by JavaScript -->
+            </div>
+            
+            <button class="header__mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h1>Upload Project Sosial</h1>
+                    <p>Bagikan project sosial Anda dengan komunitas dan dapatkan dukungan untuk menciptakan dampak yang lebih besar.</p>
+                </div>
+
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <form id="projectForm" class="fade-in">
+                        <div class="form__group">
+                            <label for="projectTitle" class="form__label">Judul Project *</label>
+                            <input type="text" id="projectTitle" name="title" class="form__input" required 
+                                   placeholder="Masukkan judul project yang menarik">
+                            <div class="form__help">Buatlah judul yang jelas dan menarik perhatian</div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="projectCategory" class="form__label">Kategori *</label>
+                            <select id="projectCategory" name="category" class="form__select" required>
+                                <option value="">Pilih kategori project</option>
+                                <option value="pendidikan">Pendidikan</option>
+                                <option value="kesehatan">Kesehatan</option>
+                                <option value="lingkungan">Lingkungan</option>
+                                <option value="ekonomi">Pemberdayaan Ekonomi</option>
+                                <option value="teknologi">Teknologi untuk Kebaikan</option>
+                                <option value="pangan">Ketahanan Pangan</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="projectDescription" class="form__label">Deskripsi Project *</label>
+                            <textarea id="projectDescription" name="description" class="form__textarea" required 
+                                      rows="6" placeholder="Jelaskan project Anda secara detail..."></textarea>
+                            <div class="form__help">Jelaskan masalah yang ingin dipecahkan, solusi yang ditawarkan, dan dampak yang diharapkan</div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="projectLocation" class="form__label">Lokasi *</label>
+                            <input type="text" id="projectLocation" name="location" class="form__input" required 
+                                   placeholder="Kota, Provinsi">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="targetBeneficiaries" class="form__label">Target Penerima Manfaat *</label>
+                            <input type="text" id="targetBeneficiaries" name="targetBeneficiaries" class="form__input" required 
+                                   placeholder="Contoh: Anak-anak usia sekolah, Petani kecil, dll.">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="fundingNeeded" class="form__label">Kebutuhan Pendanaan</label>
+                            <input type="number" id="fundingNeeded" name="fundingNeeded" class="form__input" 
+                                   placeholder="0" min="0">
+                            <div class="form__help">Masukkan jumlah dalam Rupiah (opsional)</div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="timeline" class="form__label">Timeline Project *</label>
+                            <select id="timeline" name="timeline" class="form__select" required>
+                                <option value="">Pilih timeline</option>
+                                <option value="1-3 bulan">1-3 bulan</option>
+                                <option value="3-6 bulan">3-6 bulan</option>
+                                <option value="6-12 bulan">6-12 bulan</option>
+                                <option value="lebih dari 1 tahun">Lebih dari 1 tahun</option>
+                            </select>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="teamSize" class="form__label">Ukuran Tim</label>
+                            <select id="teamSize" name="teamSize" class="form__select">
+                                <option value="">Pilih ukuran tim</option>
+                                <option value="individual">Individual (1 orang)</option>
+                                <option value="2-5 orang">2-5 orang</option>
+                                <option value="6-10 orang">6-10 orang</option>
+                                <option value="lebih dari 10 orang">Lebih dari 10 orang</option>
+                            </select>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="collaborationNeeds" class="form__label">Kebutuhan Kolaborasi</label>
+                            <textarea id="collaborationNeeds" name="collaborationNeeds" class="form__textarea" 
+                                      rows="3" placeholder="Jelaskan bantuan atau kolaborasi yang Anda butuhkan..."></textarea>
+                            <div class="form__help">Contoh: Mentor bisnis, developer, desainer, ahli marketing, dll.</div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contactInfo" class="form__label">Informasi Kontak *</label>
+                            <input type="email" id="contactInfo" name="contactInfo" class="form__input" required 
+                                   placeholder="Email untuk dihubungi">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="projectWebsite" class="form__label">Website/Media Sosial Project</label>
+                            <input type="url" id="projectWebsite" name="website" class="form__input" 
+                                   placeholder="https://...">
+                            <div class="form__help">Link website, Instagram, atau media sosial project (opsional)</div>
+                        </div>
+
+                        <div class="form__group">
+                            <label class="form__label">
+                                <input type="checkbox" required style="margin-right: 0.5rem;">
+                                Saya menyetujui bahwa informasi project ini akan dipublikasikan di platform dan dapat dilihat oleh komunitas
+                            </label>
+                        </div>
+
+                        <div class="form__group">
+                            <button type="submit" class="btn btn--primary" style="width: 100%;">Upload Project</button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted">Project yang diupload akan direview terlebih dahulu sebelum dipublikasikan</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2024 Sociopreneur Learn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            if (!requireAuth()) return;
+
+            const projectForm = document.getElementById('projectForm');
+            projectForm.addEventListener('submit', handleProjectSubmit);
+        });
+
+        function handleProjectSubmit(event) {
+            event.preventDefault();
+            clearFormErrors();
+
+            const formData = new FormData(event.target);
+            const projectData = {
+                id: Date.now().toString(),
+                title: formData.get('title'),
+                category: formData.get('category'),
+                description: formData.get('description'),
+                location: formData.get('location'),
+                targetBeneficiaries: formData.get('targetBeneficiaries'),
+                fundingNeeded: formData.get('fundingNeeded') ? parseInt(formData.get('fundingNeeded')) : 0,
+                timeline: formData.get('timeline'),
+                teamSize: formData.get('teamSize'),
+                collaborationNeeds: formData.get('collaborationNeeds'),
+                contactInfo: formData.get('contactInfo'),
+                website: formData.get('website'),
+                author: app.currentUser.name,
+                authorId: app.currentUser.id,
+                dateCreated: new Date().toISOString(),
+                status: 'pending',
+                likes: 0,
+                views: 0
+            };
+
+            // Validation
+            if (!projectData.title) {
+                showFormError('title', 'Judul project wajib diisi');
+                return;
+            }
+
+            if (!projectData.category) {
+                showFormError('category', 'Kategori wajib dipilih');
+                return;
+            }
+
+            if (!projectData.description || projectData.description.length < 50) {
+                showFormError('description', 'Deskripsi minimal 50 karakter');
+                return;
+            }
+
+            if (!projectData.location) {
+                showFormError('location', 'Lokasi wajib diisi');
+                return;
+            }
+
+            if (!projectData.targetBeneficiaries) {
+                showFormError('targetBeneficiaries', 'Target penerima manfaat wajib diisi');
+                return;
+            }
+
+            if (!projectData.timeline) {
+                showFormError('timeline', 'Timeline wajib dipilih');
+                return;
+            }
+
+            if (!validateEmail(projectData.contactInfo)) {
+                showFormError('contactInfo', 'Format email tidak valid');
+                return;
+            }
+
+            // Save project to user data
+            if (!app.currentUser.projects) {
+                app.currentUser.projects = [];
+            }
+            app.currentUser.projects.push(projectData);
+            authManager.updateUser(app.currentUser.id, app.currentUser);
+
+            // Save to global projects list
+            const allProjects = JSON.parse(localStorage.getItem('sociopreneur_projects') || '[]');
+            allProjects.push(projectData);
+            localStorage.setItem('sociopreneur_projects', JSON.stringify(allProjects));
+
+            // Add impact points
+            app.addImpactPoints(50, 'Mengupload project sosial');
+
+            app.showNotification('Project berhasil diupload! Akan direview dalam 1-2 hari kerja.', 'success');
+
+            // Reset form
+            event.target.reset();
+
+            // Redirect to dashboard after delay
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

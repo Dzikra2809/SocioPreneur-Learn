@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../IMG/SocioPreneur Learn Logo.png">
+    <title>Kursus - Sociopreneur Learn</title>
+    <meta name="description" content="Jelajahi kursus social entrepreneurship terbaik dari para ahli">
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo">
+                <!-- <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                </svg> -->
+                <a href="index.html">SocioPreneur Learn</a>
+            </div>
+            
+            <nav class="header__nav">
+                <a href="index.html">Beranda</a>
+                <a href="courses.html" class="active">Kursus</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="community.html">Komunitas</a>
+            </nav>
+            
+            <div class="header__auth">
+                <!-- Auth buttons will be populated by JavaScript -->
+            </div>
+            
+            <button class="header__mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h1 class="section__title">Kursus Social Entrepreneurship</h1>
+                    <p class="section__subtitle">Pelajari dari para ahli dan kembangkan bisnis yang berdampak sosial</p>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="search-bar">
+                    <input type="text" id="courseSearch" class="form__input search-bar__input" 
+                           placeholder="Cari kursus...">
+                    <select id="courseFilter" class="form__select search-bar__filter">
+                        <option value="all">Semua Tipe</option>
+                        <option value="free">Gratis</option>
+                        <option value="premium">Premium</option>
+                    </select>
+                </div>
+
+                                <!-- Courses Grid -->
+                                <div id="coursesContainer" class="grid grid--3">
+                                        <!-- Static dummy courses (3) -->
+                                        <div class="card fade-in">
+                                                <img src="../IMG/imgSoftSelling.jpg" alt="Kursus Impact Measurement" class="card__image">
+                                                <div class="card__content">
+                                                    <div class="card__badge card__badge--free">Gratis</div>
+                                                    <h3 class="card__title">Soft Selling: Strategi Penjualan yang Efektif Tanpa Tekanan</h3>
+                                                    <p class="card__text">Dalam dunia bisnis dan pemasaran, teknik penjualan memiliki peran yang sanga…</p>
+                                                    <div class="card__footer">
+                                                        <div class="card__price">Gratis</div>
+                                                        <a href="course-impact.html" class="btn btn--primary">Mulai Belajar</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="card fade-in">
+                                                <img src="../IMG/remot2.jpg" alt="Kursus Business Model" class="card__image">
+                                                <div class="card__content">
+                                                    <div class="card__badge card__badge--premium">Premium</div>
+                                                    <h3 class="card__title">Kerja Remote: Kerja Santai, Gaji Serius.</h3>
+                                                    <p class="card__text">Seiring bergantinya zaman, dunia pekerjaan juga ikut berkembang. Banyak …</p>
+                                                    <div class="card__footer">
+                                                        <div class="card__price">Rp 250.000</div>
+                                                        <a href="course-business.html" class="btn btn--primary">Mulai Belajar</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="card fade-in">
+                                                <img src="../IMG/newRevolution.jpg" alt="Kursus Fundraising" class="card__image">
+                                                <div class="card__content">
+                                                    <div class="card__badge card__badge--free">Gratis</div>
+                                                    <h3 class="card__title">New Revolution in the World of Work</h3>
+                                                    <p class="card__text">The year 2024 has ushered in a new revolution in the world of work, where…</p>
+                                                    <div class="card__footer">
+                                                        <div class="card__price">Gratis</div>
+                                                        <a href="course-fundraising.html" class="btn btn--primary">Mulai Belajar</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 SocioPreneur Learn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/courses.js"></script>
+</body>
+
+</html>

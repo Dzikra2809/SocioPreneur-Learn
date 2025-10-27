@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../IMG/SocioPreneur Learn Logo.png">
+    <title>Komunitas - Sociopreneur Learn</title>
+    <meta name="description" content="Bergabung dengan komunitas social entrepreneur Indonesia">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .community-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .thread-card {
+            margin-bottom: 1rem;
+        }
+        
+        .thread-header {
+            margin-bottom: 1rem;
+        }
+        
+        .thread-title a {
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+        
+        .thread-title a:hover {
+            color: var(--color-primary);
+        }
+        
+        .thread-meta {
+            font-size: 0.875rem;
+            color: var(--color-muted);
+            margin-top: 0.25rem;
+        }
+        
+        .thread-content {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+        
+        .thread-tags {
+            margin: 1rem 0;
+        }
+        
+        .thread-stats {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .thread-like {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .thread-like:hover,
+        .thread-like.liked {
+            background: var(--color-light);
+            color: var(--color-primary);
+        }
+        
+        .thread-replies {
+            color: var(--color-muted);
+            font-size: 0.875rem;
+        }
+        
+        .thread-detail {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .thread-main {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 1rem;
+        }
+        
+        .thread-author-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .thread-actions {
+            margin-top: 1rem;
+        }
+        
+        .reply-item {
+            background: var(--color-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .reply-author {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .reply-content {
+            margin-bottom: 0.5rem;
+        }
+        
+        .reply-form {
+            background: var(--color-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .community-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            
+            .thread-stats {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo">
+                <!-- <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                </svg> -->
+                <a href="index.html">SocioPreneur Learn</a>
+            </div>
+            
+            <nav class="header__nav">
+                <a href="index.html">Beranda</a>
+                <a href="courses.html">Kursus</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="community.html" class="active">Komunitas</a>
+            </nav>
+            
+            <div class="header__auth">
+                <!-- Auth buttons will be populated by JavaScript -->
+            </div>
+            
+            <button class="header__mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="community-header">
+                    <div>
+                        <h1 class="section__title">Forum Komunitas</h1>
+                        <p class="section__subtitle">Diskusi, berbagi, dan berkolaborasi dengan sesama social entrepreneur</p>
+                    </div>
+                    <button id="newThreadBtn" class="btn btn--primary">+ Buat Thread Baru</button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="search-bar">
+                    <input type="text" id="threadSearch" class="form__input search-bar__input" 
+                           placeholder="Cari thread...">
+                    <select id="tagFilter" class="form__select search-bar__filter">
+                        <option value="all">Semua Tag</option>
+                    </select>
+                </div>
+
+                <!-- Threads List -->
+                <div id="threadsContainer">
+                    <!-- Threads will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 SocioPreneur Learn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/community.js"></script>
+</body>
+
+</html>

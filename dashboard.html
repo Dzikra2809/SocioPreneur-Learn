@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../IMG/SocioPreneur Learn Logo.png">
+    <title>Dashboard - Sociopreneur Learn</title>
+    <meta name="description" content="Dashboard pengguna Sociopreneur Learn">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .dashboard-card h3 {
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .impact-points {
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .impact-points__number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .impact-points__label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .progress-item:last-child {
+            border-bottom: none;
+        }
+        
+        .progress-info h4 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .progress-info p {
+            font-size: 0.875rem;
+            color: var(--color-muted);
+            margin: 0;
+        }
+        
+        .progress-bar-container {
+            width: 100px;
+            text-align: right;
+        }
+        
+        .progress-percentage {
+            font-size: 0.875rem;
+            color: var(--color-muted);
+            margin-bottom: 0.25rem;
+        }
+        
+        .impact-history {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .impact-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .impact-item:last-child {
+            border-bottom: none;
+        }
+        
+        .impact-item__info h4 {
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .impact-item__info p {
+            font-size: 0.75rem;
+            color: var(--color-muted);
+            margin: 0;
+        }
+        
+        .impact-item__points {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo">
+                <!-- <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                </svg> -->
+                <a href="index.html">SocioPreneur Learn</a>
+            </div>
+            
+            <nav class="header__nav">
+                <a href="index.html">Beranda</a>
+                <a href="courses.html">Kursus</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="community.html">Komunitas</a>
+            </nav>
+            
+            <div class="header__auth">
+                <!-- Auth buttons will be populated by JavaScript -->
+            </div>
+            
+            <button class="header__mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h1>Dashboard</h1>
+                    <p id="welcomeMessage">Selamat datang kembali!</p>
+                </div>
+
+                <!-- Impact Points -->
+                <div class="impact-points fade-in">
+                    <div class="impact-points__number" id="impactPointsDisplay">0</div>
+                    <div class="impact-points__label">Impact Points</div>
+                    <p style="margin-top: 1rem; opacity: 0.9;">Poin yang Anda kumpulkan dari aktivitas pembelajaran dan kontribusi sosial</p>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Course Progress -->
+                    <div class="dashboard-card fade-in">
+                        <h3>📚 Progress Kursus</h3>
+                        <div id="courseProgress">
+                            <!-- Course progress will be populated by JavaScript -->
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="courses.html" class="btn btn--primary btn--small">Jelajahi Kursus Lain</a>
+                        </div>
+                    </div>
+
+                    <!-- Impact History -->
+                    <div class="dashboard-card fade-in">
+                        <h3>🎯 Riwayat Impact Points</h3>
+                        <div id="impactHistory" class="impact-history">
+                            <!-- Impact history will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card fade-in">
+                        <h3>⚡ Aksi Cepat</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <a href="courses.html" class="btn btn--ghost btn--small">Lanjutkan Belajar</a>
+                            <a href="marketplace.html" class="btn btn--ghost btn--small">Belanja Produk Sosial</a>
+                            <a href="community.html" class="btn btn--ghost btn--small">Gabung Diskusi</a>
+                            <a href="upload-project.html" class="btn btn--ghost btn--small">Upload Project</a>
+                        </div>
+                    </div>
+
+                    <!-- Recent Orders -->
+                    <div class="dashboard-card fade-in">
+                        <h3>🛍️ Pesanan Terbaru</h3>
+                        <div id="recentOrders">
+                            <!-- Recent orders will be populated by JavaScript -->
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="marketplace.html" class="btn btn--primary btn--small">Belanja Lagi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 SocioPreneur Learn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/courses.js"></script>
+    
+    <script>
+        // Dashboard functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            if (!requireAuth()) return;
+
+            // Update welcome message
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage && app.currentUser) {
+                welcomeMessage.textContent = `Selamat datang kembali, ${app.currentUser.name}!`;
+            }
+
+            // Update impact points
+            const impactPointsDisplay = document.getElementById('impactPointsDisplay');
+            if (impactPointsDisplay && app.currentUser) {
+                impactPointsDisplay.textContent = app.currentUser.impactPoints || 0;
+            }
+
+            // Render course progress
+            renderCourseProgress();
+            
+            // Render impact history
+            renderImpactHistory();
+            
+            // Render recent orders
+            renderRecentOrders();
+        });
+
+        function renderCourseProgress() {
+            const container = document.getElementById('courseProgress');
+            if (!container || !app.currentUser) return;
+
+            const enrolledCourses = app.currentUser.enrolledCourses || [];
+            const completedCourses = app.currentUser.completedCourses || [];
+
+            if (enrolledCourses.length === 0) {
+                container.innerHTML = '<p class="text-muted">Belum ada kursus yang diikuti.</p>';
+                return;
+            }
+
+            // Load courses data to get course details
+            fetch('../data/mock-courses.json')
+                .then(response => response.json())
+                .then(courses => {
+                    const enrolledCourseDetails = courses.filter(course => 
+                        enrolledCourses.includes(course.id)
+                    );
+
+                    container.innerHTML = enrolledCourseDetails.map(course => {
+                        const isCompleted = completedCourses.includes(course.id);
+                        const completedModules = course.modules.filter(m => m.completed).length;
+                        const totalModules = course.modules.length;
+                        const progress = totalModules > 0 ? (completedModules / totalModules) * 100 : 0;
+
+                        return `
+                            <div class="progress-item">
+                                <div class="progress-info">
+                                    <h4>${course.title}</h4>
+                                    <p>${isCompleted ? 'Selesai' : `${completedModules}/${totalModules} modul`}</p>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-percentage">${Math.round(progress)}%</div>
+                                    <div class="progress">
+                                        <div class="progress__bar" style="width: ${progress}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                })
+                .catch(error => {
+                    console.error('Error loading courses:', error);
+                    container.innerHTML = '<p class="text-muted">Error memuat data kursus.</p>';
+                });
+        }
+
+        function renderImpactHistory() {
+            const container = document.getElementById('impactHistory');
+            if (!container || !app.currentUser) return;
+
+            const history = app.currentUser.impactHistory || [];
+
+            if (history.length === 0) {
+                container.innerHTML = '<p class="text-muted">Belum ada aktivitas impact points.</p>';
+                return;
+            }
+
+            // Show latest 10 activities
+            const recentHistory = history.slice(-10).reverse();
+
+            container.innerHTML = recentHistory.map(item => `
+                <div class="impact-item">
+                    <div class="impact-item__info">
+                        <h4>${item.action}</h4>
+                        <p>${app.formatDate(item.date)}</p>
+                    </div>
+                    <div class="impact-item__points">+${item.points}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderRecentOrders() {
+            const container = document.getElementById('recentOrders');
+            if (!container || !app.currentUser) return;
+
+            const orders = app.currentUser.orders || [];
+
+            if (orders.length === 0) {
+                container.innerHTML = '<p class="text-muted">Belum ada pesanan.</p>';
+                return;
+            }
+
+            // Show latest 3 orders
+            const recentOrders = orders.slice(-3).reverse();
+
+            container.innerHTML = recentOrders.map(order => `
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <h4>Pesanan #${order.id.slice(-6)}</h4>
+                        <p>${order.items.length} item • ${app.formatPrice(order.total)}</p>
+                        <p style="font-size: 0.75rem;">${app.formatDate(order.date)}</p>
+                    </div>
+                    <div>
+                        <span class="badge badge--primary">${order.status}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>
